@@ -331,7 +331,7 @@ class ModHandler:
     # remove plugin directory
     # add a method that will pack uhhhhh the fkn plugins in a tar archive
 
-class PropertiesHandler: #not tested yet
+class PropertiesHandler:
     """Class that handles server properties"""
     server_dir = descriptors.ServerDir("server_dir", Path)
 
@@ -358,7 +358,7 @@ class PropertiesHandler: #not tested yet
             raise ValueError("provide string arguments")
         
         text = self._read()
-        text.replace(old, new)
+        text = text.replace(old, new)
         with open(self.properties_file, "w") as file:
             file.write(text)
 
@@ -384,8 +384,8 @@ class PropertiesHandler: #not tested yet
         )
     
     def change_port(self, new_port: str | int):
-        self._change(
-            self._find_value("server-port"),
+        self._change_param(
+            "server-port",
             str(new_port)
         )
     #add more if needed, motd, icon etc
