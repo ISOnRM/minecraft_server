@@ -15,10 +15,11 @@ class Main:
         self.server_dir = server_dir
 
 
-        self._core_handler = handlers.CoreHandler(server_dir)
+        self._core_handler = handlers.CoreHandler(self.server_dir)
         self._server_handler = None
-        self._world_handler = handlers.WorldHandler(server_dir)
-        self._mod_handler = handlers.ModHandler(server_dir)
+        self._world_handler = handlers.WorldHandler(self.server_dir)
+        self._mod_handler = handlers.ModHandler(self.server_dir)
+        self._properties_handler = handlers.PropertiesHandler(self.server_dir)
 
     def _init_server_handler(
             self,
@@ -146,3 +147,9 @@ class Main:
                 print(plugin_name)
 
         return list_of_plugin_names
+
+    # Propereties Hanlder shi-
+
+    @catch_exceptions
+    def change_port_in_properties(self, new_port):
+        self._properties_handler.change_port(new_port)
