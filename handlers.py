@@ -29,17 +29,19 @@ class CoreHandler:
     ) -> Path:
         url = f"https://api.papermc.io/v2/projects/paper/versions/{version}/builds/{build}/downloads/paper-{version}-{build}.jar"
 
-        with requests.get(url, stream=True) as response:
-            response.raise_for_status()
-            block_size = 8192
+        # with requests.get(url, stream=True) as response:
+        #     response.raise_for_status()
+        #     block_size = 8192
 
-            file_name = self.server_dir / url.split("/")[-1]
+        #     file_name = self.server_dir / url.split("/")[-1]
 
-            with open(file_name, "wb") as file:
-                for chunk in response.iter_content(chunk_size=block_size):
-                    file.write(chunk)
+        #     with open(file_name, "wb") as file:
+        #         for chunk in response.iter_content(chunk_size=block_size):
+        #             file.write(chunk)
             
-        return file_name.resolve()
+        # return file_name.resolve()
+        
+        return self.install_other_core(url=url)
 
     def install_other_core(
             self, url: str
