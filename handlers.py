@@ -349,7 +349,7 @@ class PropertiesHandler:
         with open(self.properties_file, "r") as file:
             return file.read()
         
-    def _change(
+    def _write(
             self,
             old: str,
             new: str
@@ -378,9 +378,13 @@ class PropertiesHandler:
         return None
     
     def _change_param(self, param, new_value):
-        self._change(
-            self._find_value(param),
-            new_value
+        old_value = self._find_value(param)
+        if not old_value:
+            raise KeyError(f"{param=} was not found in properties file")
+        
+        self._write(
+            f'{param}={old_value}',
+            f'{param}={new_value}'
         )
     
     def change_port(self, new_port: str | int):

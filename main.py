@@ -153,3 +153,12 @@ class Main:
     @catch_exceptions
     def change_port_in_properties(self, new_port):
         self._properties_handler.change_port(new_port)
+
+    @catch_exceptions
+    def change_any_param_in_properties(self, param, new_value):
+        
+        self._properties_handler \
+        ._change_param(
+            param, new_value
+        )
+        
