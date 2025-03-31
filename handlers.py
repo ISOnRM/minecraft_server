@@ -355,7 +355,8 @@ class PropertiesHandler:
 
         properties_file: Path = self.server_dir / Path("server.properties")
         if not properties_file.exists():
-            raise FileNotFoundError("server properties file not found")
+            # raise FileNotFoundError("server properties file not found")
+            properties_file.touch()
         self.properties_file = properties_file    
 
     def _read(self) -> str:

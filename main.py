@@ -1,4 +1,5 @@
 import traceback
+import json
 from pathlib import Path
 
 import handlers
@@ -168,4 +169,65 @@ class Main:
         ._change_param(
             param, new_value
         )
+
+class Config:
+    def __init__(
+            self,
+            config: Path = Path("server_config.json")
+    ):
+        config = config.resolve()
+        if not config.exists():
+            raise FileNotFoundError
         
+        self.config = config
+
+        self._main = None
+
+    def _get_config(self):
+        try:
+            with open(self.config, "r") as config:
+                data = json.load(config)
+        except json.JSONDecodeError:
+            print("Corrupted json file")
+        
+        self._data = data
+    
+    def _load_main(self):
+        
+        if self._data:
+            self._main = Main(
+                server_dir=Path(self._data["server"]["server_dir"])
+            )
+        
+            
+    def _load_core(self) -> Path:
+        if not self._main:
+            raise ValueError
+        
+        core = self._main.find_core()
+
+        if not core:
+            url = self._data["server"]["server_core"]["url"]
+            version, build = self._data["server"]["server_core"]["version"], self._data["server"]["server_core"]["build"]
+
+            if url:
+                core_path = self._main.install_other_core(url)
+            elif version and build:
+                core_path = self._main.install_paper_core(version, build)
+            else:
+                raise ValueError
+            
+            return core_path
+
+        return core
+    
+    
+    def __call__(self):
+        self._get_config()
+        self._load_main()
+        core = self._load_core()
+        self._main.start_server(
+            core,
+            (self._data["server"]["ram"][0], self._data["server"]["ram"][1]),
+            self._data["server"]["java_path"]
+        )

@@ -1,0 +1,12 @@
+{
+    "server":{
+        "server_dir": "server_test",
+        "server_core":{
+            "url": "",
+            "version": "1.21.4",
+            "build": "222"
+        },
+        "ram": [1, 2],
+        "java_path": "java"
+    }
+}
