@@ -137,6 +137,19 @@ class ServerHandler:
                 server.stdin.flush()
             server.wait()
 
+    def add_server_icon(self, file_path: Path):
+        file_path = file_path.resolve()
+        if not file_path.exists():
+            raise FileNotFoundError()
+        if not file_path.suffix == ".png":
+            raise ValueError("provide a png file")
+        
+        icon_path = self.server_dir / Path("server-icon.png")
+        if icon_path.exists():
+            icon_path.unlink()
+
+        shutil.copy(file_path, icon_path)
+
     @staticmethod
     def remove_server(server_dir):
         if isinstance(server_dir, Path):

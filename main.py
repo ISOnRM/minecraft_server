@@ -92,6 +92,13 @@ class Main:
         
         self._server_handler.start_server()
 
+    @catch_exceptions
+    def add_icon_sever(
+        self,
+        image_file
+    ):
+        self._server_handler.add_server_icon(image_file)
+
     @staticmethod
     @catch_exceptions
     def remove_server(server_dir):
