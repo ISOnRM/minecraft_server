@@ -129,6 +129,7 @@ def create_parser():
         nargs=2,
         metavar=("MIN", "MAX"),
         type=int,
+        default=(4,6),
         help="Minimum and maximum RAM (in GB) for the server"
     )
     # Server remove
@@ -144,6 +145,7 @@ def create_parser():
     server_icon.add_argument(
         "--file",
         type=Path,
+        required=True,
         help="Path to the new icon file"
     )
     
@@ -326,7 +328,7 @@ def main():
         elif args.subjects == "server":
             if args.action == "start":
                 core = main_obj.find_core()
-                ram = tuple(args.ram) if args.ram else (2, 4)
+                ram = tuple(args.ram)
                 main_obj.start_server(core, ram)
             elif args.action == "remove":
                 Main.remove_server(args.work_dir)
