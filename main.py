@@ -120,6 +120,11 @@ class Main:
     def remove_world(self, name: str):
         self._world_handler.remove_world(name)
 
+    @catch_exceptions
+    def list_world(self):
+        for world in self._world_handler._get_world_list():
+            print(world)
+
     # Mod Handler Shi-
 
     @catch_exceptions
@@ -155,6 +160,7 @@ class Main:
                 print(plugin_name)
 
         return list_of_plugin_names
+    
 
     # Propereties Hanlder shi-
 
