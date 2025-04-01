@@ -334,3 +334,6 @@ ls: cannot access 'server_test/': No such file or directory
 ---
 
 **First ever repo.**
+
+**MISC**
+![image](https://github.com/user-attachments/assets/b9df3ef2-dcc9-4705-84a5-28a910df369e)
