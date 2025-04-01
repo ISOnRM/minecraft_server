@@ -181,6 +181,9 @@ class WorldHandler:
     ) -> Path:
         archive_path = self.server_dir / Path(name).with_suffix(".tar")
         
+        if archive_path.exists():
+            raise FileExistsError(f"{archive_path.stem} exists")
+        
         if not archive_path.relative_to(self.server_dir):
             raise ValueError(f"{archive_path.name} has to be in {self.server_dir}")
         
