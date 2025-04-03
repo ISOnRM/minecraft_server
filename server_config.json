@@ -1,12 +1,12 @@
 {
     "server":{
-        "server_dir": "server_test",
+        "server_dir": "my_server",
         "server_core":{
             "url": "",
             "version": "1.21.4",
             "build": "222"
         },
-        "ram": [1, 2],
+        "ram": [4, 6],
         "java_path": "java"
     }
 }
