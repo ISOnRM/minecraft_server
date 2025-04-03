@@ -74,7 +74,7 @@ def create_parser():
         help="Install core using a specified URL"
     )
     core_install.add_argument(
-        "--url",
+        "-u", "--url",
         type=str,
         required=True,
         help="URL to download and install the core"
@@ -85,13 +85,13 @@ def create_parser():
         help="Install a Paper server build using version and build number"
     )
     core_install_paper.add_argument(
-        "--version",
+        "-v" ,"--version",
         type=str,
         required=True,
         help="Minecraft version for the Paper build"
     )
     core_install_paper.add_argument(
-        "--build",
+        "-b", "--build",
         type=str,
         required=True,
         help="Build number for the Paper build"
@@ -102,7 +102,7 @@ def create_parser():
         help="Remove the core file; optionally specify the core name"
     )
     core_remove.add_argument(
-        "--name",
+        "-n", "--name",
         type=str,
         default=None,
         help="Name of the core file to remove (if not specified, the default core is removed)"
@@ -125,7 +125,7 @@ def create_parser():
         help="Start the server with specified options"
     )
     server_start.add_argument(
-        "--ram",
+        "-r","--ram",
         nargs=2,
         metavar=("MIN", "MAX"),
         type=int,
@@ -143,7 +143,7 @@ def create_parser():
         help="Change the server icon"
     )
     server_icon.add_argument(
-        "--file",
+        "-f", "--file",
         type=Path,
         required=True,
         help="Path to the new icon file"
@@ -166,7 +166,7 @@ def create_parser():
         help="Pack the current world into an archive"
     )
     world_pack.add_argument(
-        "--name",
+        "-n", "--name",
         type=str,
         required=True,
         help="Name for the world archive"
@@ -177,7 +177,7 @@ def create_parser():
         help="Unpack a world from an archive"
     )
     world_unpack.add_argument(
-        "--name",
+        "-n", "--name",
         type=str,
         required=True,
         help="Name of the world archive to unpack"
@@ -188,7 +188,7 @@ def create_parser():
         help="Remove an existing world"
     )
     world_remove.add_argument(
-        "--name",
+        "-n", "--name",
         type=str,
         required=True,
         help="Name of the world to remove"
@@ -216,7 +216,7 @@ def create_parser():
         help="Download a plugin from a specified URL"
     )
     plugin_download.add_argument(
-        "--url",
+        "-u", "--url",
         type=str,
         required=True,
         help="URL of the plugin to download"
@@ -227,7 +227,7 @@ def create_parser():
         help="Download plugins in bulk from a file containing URLs"
     )
     plugin_bulk.add_argument(
-        "--file",
+        "-f", "--file",
         type=Path,
         required=True,
         help="Path to a file with plugin URLs (one per line)"
@@ -238,7 +238,7 @@ def create_parser():
         help="Remove a plugin by name"
     )
     plugin_remove.add_argument(
-        "--name",
+        "-n", "--name",
         type=str,
         required=True,
         help="Name of the plugin to remove"
@@ -249,13 +249,13 @@ def create_parser():
         help="Toggle the state of a plugin (enable or disable)"
     )
     plugin_toggle.add_argument(
-        "--name",
+        "-n", "--name",
         type=str,
         required=True,
         help="Name of the plugin to toggle"
     )
     plugin_toggle.add_argument(
-        "--disable",
+        "-d", "--disable",
         action="store_true",
         help="If set, disable the plugin instead of enabling it"
     )
@@ -282,7 +282,7 @@ def create_parser():
         help="Change the server port"
     )
     properties_change_port.add_argument(
-        "--port",
+        "-p", "--port",
         type=int,
         required=True,
         help="New port number for the server"

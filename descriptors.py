@@ -82,29 +82,3 @@ class MinMaxRam:
             setattr(instance, self.attr_name, value)
         else:
             raise ValueError("Minimal value has to be smaller than the maximum value. Duh")
-
-#Not used yet
-class PackedWorld:
-    def __init__(
-            self, attr_name, type
-    ):
-        self.attr_name = '_' + attr_name
-        self.type = type
-        
-    def __get__(self, instance, owner):
-        if not instance:
-            return self
-        return getattr(instance, self.attr_name, None)
-    
-    def __set__(self, insance, value):
-        server_dir = insance.server_dir
-        value = value.resolve()
-
-        if not server_dir:
-            raise ValueError(f"Instance has to have a server_dir")
-        
-        if not value.is_relative_to(server_dir):
-            raise ValueError(f"{value} is not in {server_dir}")
-        
-        setattr(insance, self.attr_name, value)
-

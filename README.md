@@ -327,9 +327,13 @@ ls: cannot access 'server_test/': No such file or directory
 
 ## Upcoming Features
 
-- Shortened arguments (e.g., `-p` instead of `--port`)
 - Default values in some commands (e.g., port defaults to `25565`)
 - Packed world compression
+
+## Recently changed
+
+- Shortened arguments (e.g., `-p` instead of `--port`)
+- Removed unused descriptor
 
 ---
 
