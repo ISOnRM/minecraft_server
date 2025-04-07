@@ -329,6 +329,7 @@ ls: cannot access 'server_test/': No such file or directory
 
 - Default values in some commands (e.g., port defaults to `25565`)
 - Packed world compression
+- Updated repo directory
 
 ## Recently changed
 
