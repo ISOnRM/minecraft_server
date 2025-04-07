@@ -11,6 +11,19 @@ git clone https://github.com/ISOnRM/minecraft_server.git
 cd minecraft_server/
 python3 app.py config -f server_config.json
 ```
+
+### OR
+
+```bash
+git clone https://github.com/ISOnRM/minecraft_server.git && cd minecraft_server/ && python3 app.py config -f server_config.json
+```
+
+The commands above will start the server with the following configuration:
+
+- 1.21.4 Minecraft Version 
+- Paper Core (Build #224)
+- Allowed RAM 4GB (min) - 6GB (max)
+
 ---
 
 ## Loading Server via Configuration
