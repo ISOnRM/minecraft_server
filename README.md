@@ -4,6 +4,15 @@ In this repository you will find my application that will allow you to create an
 
 ---
 
+## TL;DR
+
+```bash
+git clone https://github.com/ISOnRM/minecraft_server.git
+cd minecraft_server/
+python3 app.py config -f server_config.json
+```
+---
+
 ## Loading Server via Configuration
 
 To load your server via config you'll need to choose the server's directory name, provide a download URL for a core (or enter the version and its Paper build while leaving the URL as an empty string), set your RAM constraints, and provide the Java path on your Linux machine.
