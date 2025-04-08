@@ -16,11 +16,21 @@ class ServerDir:
 
         if not isinstance(value, self.type):
             raise ValueError(f"{value} is of wrong type")
-        value = value.resolve()
-        script_directory = Path(__file__).parent.resolve()
+        
 
-        if not value.relative_to(script_directory):
-            raise ValueError(f"{value} has to be in {script_directory}")
+        if value.is_absolute() or len(value.parts) != 1:
+            raise ValueError(f"{value} must be a single directory name, like 'dir'")
+        
+        value = value.resolve()
+
+        repo_root = Path(__file__).parent.parent.resolve()
+        server_management_package = repo_root / Path("server_management")
+
+        if not value.is_relative_to(repo_root):
+            raise ValueError(f"{value} has to be in {repo_root}")
+        
+        if value.resolve() == server_management_package.resolve():
+            raise ValueError(f"Provide another directory")
         
         if value.exists():
             if not value.is_dir():

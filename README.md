@@ -351,15 +351,15 @@ ls: cannot access 'server_test/': No such file or directory
 
 - Default values in some commands (e.g., port defaults to `25565`)
 - Packed world compression
-- Updated repo directory
 
 ## Recently changed
 
 - Shortened arguments (e.g., `-p` instead of `--port`)
 - Removed unused descriptor
+- Updated repo directory
 
 ---
 
-**First ever repo.**
+**First ever repo**
 
 ![image](https://github.com/user-attachments/assets/b9df3ef2-dcc9-4705-84a5-28a910df369e)

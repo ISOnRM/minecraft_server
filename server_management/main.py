@@ -2,7 +2,7 @@ import traceback
 import json
 from pathlib import Path
 
-import handlers
+from .handlers import CoreHandler, ServerHandler, WorldHandler, ModHandler, PropertiesHandler
 
 
 class Main:
@@ -16,11 +16,11 @@ class Main:
         self.server_dir = server_dir
 
 
-        self._core_handler = handlers.CoreHandler(self.server_dir)
+        self._core_handler = CoreHandler(self.server_dir)
         self._server_handler = None
-        self._world_handler = handlers.WorldHandler(self.server_dir)
-        self._mod_handler = handlers.ModHandler(self.server_dir)
-        self._properties_handler = handlers.PropertiesHandler(self.server_dir)
+        self._world_handler = WorldHandler(self.server_dir)
+        self._mod_handler = ModHandler(self.server_dir)
+        self._properties_handler = PropertiesHandler(self.server_dir)
 
     def _init_server_handler(
             self,
@@ -30,7 +30,7 @@ class Main:
             java_path: Path | str = "java"
     ):
         if not self._server_handler:
-            self._server_handler = handlers.ServerHandler(
+            self._server_handler = ServerHandler(
                 self.server_dir,
                 server_core,
                 ram,
@@ -103,7 +103,7 @@ class Main:
     @staticmethod
     @catch_exceptions
     def remove_server(server_dir):
-        handlers.ServerHandler.remove_server(server_dir)
+        ServerHandler.remove_server(server_dir)
 
 
     # World Handler Shi-

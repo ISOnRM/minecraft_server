@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
 
-from main import Main, Config
+from server_management.main import Main, Config
 
 def create_parser():
     """

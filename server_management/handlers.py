@@ -5,12 +5,12 @@ import shutil
 import tarfile
 from pathlib import Path
 
-import descriptors
+from .descriptors import ServerDir, ServerCore, MinMaxRam
 
 class CoreHandler:
     """A class that handles minecraft server's core."""
 
-    server_dir = descriptors.ServerDir("server_dir", Path)
+    server_dir = ServerDir("server_dir", Path)
 
     def __init__(
             self, server_dir: Path 
@@ -28,18 +28,6 @@ class CoreHandler:
             self, version: str, build: str
     ) -> Path:
         url = f"https://api.papermc.io/v2/projects/paper/versions/{version}/builds/{build}/downloads/paper-{version}-{build}.jar"
-
-        # with requests.get(url, stream=True) as response:
-        #     response.raise_for_status()
-        #     block_size = 8192
-
-        #     file_name = self.server_dir / url.split("/")[-1]
-
-        #     with open(file_name, "wb") as file:
-        #         for chunk in response.iter_content(chunk_size=block_size):
-        #             file.write(chunk)
-            
-        # return file_name.resolve()
 
         return self.install_other_core(url=url)
 
@@ -74,9 +62,9 @@ class CoreHandler:
 
 class ServerHandler:
     """A class that handles server's start and it's entire removal."""
-    server_dir = descriptors.ServerDir("server_dir", Path)
-    server_core = descriptors.ServerCore("server_core", Path)
-    ram = descriptors.MinMaxRam("ram", tuple)
+    server_dir = ServerDir("server_dir", Path)
+    server_core = ServerCore("server_core", Path)
+    ram = MinMaxRam("ram", tuple)
 
     def __init__(
             self, server_dir, server_core, ram, java_path = "java"
@@ -161,7 +149,7 @@ class ServerHandler:
 
 class WorldHandler:
     """A class that handles worlds."""
-    server_dir = descriptors.ServerDir("server_dir", Path)
+    server_dir = ServerDir("server_dir", Path)
 
     def __init__(
            self, server_dir 
@@ -239,7 +227,7 @@ class WorldHandler:
     
 class ModHandler:
     """A class that downloads mods AKA plugins on your server"""
-    server_dir = descriptors.ServerDir("server_dir", Path)
+    server_dir = ServerDir("server_dir", Path)
 
     def __init__(
             self, server_dir
@@ -349,7 +337,7 @@ class ModHandler:
 
 class PropertiesHandler:
     """Class that handles server properties"""
-    server_dir = descriptors.ServerDir("server_dir", Path)
+    server_dir = ServerDir("server_dir", Path)
 
     def __init__(
             self, server_dir
