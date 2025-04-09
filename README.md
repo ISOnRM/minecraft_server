@@ -9,13 +9,15 @@ In this repository you will find my application that will allow you to create an
 ```bash
 git clone https://github.com/ISOnRM/minecraft_server.git
 cd minecraft_server/
+./install-requirements.sh
+source .venv/bin/activate
 python3 app.py config -f server_config.json
 ```
 
 ### OR
 
 ```bash
-git clone https://github.com/ISOnRM/minecraft_server.git && cd minecraft_server/ && python3 app.py config -f server_config.json
+git clone https://github.com/ISOnRM/minecraft_server.git && cd minecraft_server/ && ./install-requirements.sh && source .venv/bin/activate && python3 app.py config -f server_config.json
 ```
 
 The commands above will start the server with the following configuration:
@@ -25,7 +27,12 @@ The commands above will start the server with the following configuration:
 - Allowed RAM 4GB (min) - 6GB (max)
 
 ---
+## Run the requirements installation script or install them manually
 
+```bash
+./install-requirements.sh
+source .venv/bin/activate
+```
 ## Loading Server via Configuration
 
 To load your server via config you'll need to choose the server's directory name, provide a download URL for a core (or enter the version and its Paper build while leaving the URL as an empty string), set your RAM constraints, and provide the Java path on your Linux machine.
@@ -357,6 +364,7 @@ ls: cannot access 'server_test/': No such file or directory
 - Shortened arguments (e.g., `-p` instead of `--port`)
 - Removed unused descriptor
 - Updated repo directory
+- Added requirements.txt
 
 ---
 
