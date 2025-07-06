@@ -1,4 +1,6 @@
 # Minecraft Server Linux-Like Command
+## Still usable, but not supported & bad code base
+## I will be making another mc server management tool soon, a better one, with better code base 
 
 In this repository you will find my application that will allow you to create and manage your Minecraft server with Linux-like commands. The CLI program is located in the `app.py` file. It uses the `argparse` library to let you handle the server's core, the server's directory, its worlds, plugins, and properties. You are also allowed to load your server from a configuration file in JSON format (an example file is provided in the repo).
 
